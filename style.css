@@ -1,0 +1,619 @@
+/* ---------------- Reset and Base Styles ---------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Border + padding ko width/height me count karega */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f5f7fa;
+  color: #333;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ---------------- Layout ---------------- */
+.container {
+  display: flex;
+  min-height: 100vh; /* Sidebar + content full height le */
+}
+
+/* ---------------- Sidebar Styles ---------------- */
+.sidebar {
+  width: 250px;
+  background: linear-gradient(135deg, #4e54c8 0%, #8f94fb 100%);
+  color: white;
+  padding: 1.5rem 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo section inside sidebar */
+.logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.logo .icon {
+  font-size: 2rem;
+  margin-right: 0.8rem;
+}
+
+.logo h2 {
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+/* Sidebar navigation */
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sidebar nav a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.sidebar nav a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.sidebar nav a.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+/* ---------------- Main Content Area ---------------- */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------------- Header ---------------- */
+.header {
+  background-color: white;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Menu button (mobile view) */
+.menu-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  display: none;
+}
+
+.menu-btn:hover {
+  background-color: #f0f2f5;
+}
+
+.header h2 {
+  color: #2d3748;
+  font-weight: 600;
+}
+
+/* Profile section (top-right) */
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user {
+  background-color: #f0f2f5;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+/* Logout button */
+#logoutBtn {
+  background-color: #4e54c8;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+#logoutBtn:hover {
+  background-color: #3f44a7;
+}
+
+/* ---------------- Filter Section ---------------- */
+.filters {
+  background-color: white;
+  padding: 1.5rem;
+  margin: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Filter dropdowns */
+.filters select {
+  padding: 0.6rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background-color: white;
+  font-size: 0.9rem;
+  min-width: 120px;
+}
+
+/* Filter and Reset buttons */
+#filterBtn,
+#resetFilters {
+  background-color: #4e54c8;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+#resetFilters {
+  background-color: #6c757d;
+}
+
+#filterBtn:hover {
+  background-color: #3f44a7;
+}
+
+#resetFilters:hover {
+  background-color: #5a6268;
+}
+
+/* ---------------- Content Area ---------------- */
+.content {
+  display: flex;
+  flex: 1;
+  padding: 0 1rem 1rem 1rem;
+  gap: 1.5rem;
+}
+
+/* Pets list grid */
+.pets-grid {
+  flex: 2;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  align-content: start;
+}
+
+/* Map container */
+.map-container {
+  flex: 1;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  max-height: 600px;
+  position: relative;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  border-radius: 10px;
+}
+
+/* Map zoom controls */
+.map-controls {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 1000;
+}
+
+.map-controls button {
+  background-color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+}
+
+.map-controls button:hover {
+  background-color: #f0f2f5;
+}
+
+/* ---------------- Pet Card Styles ---------------- */
+.pet-card {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pet-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Pet image with status */
+.pet-image {
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.pet-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.pet-card:hover .pet-image img {
+  transform: scale(1.05);
+}
+
+/* Status badge */
+.pet-status {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.status-available {
+  background-color: #4caf50;
+  color: white;
+}
+.status-pending {
+  background-color: #ff9800;
+  color: white;
+}
+.status-adopted {
+  background-color: #9e9e9e;
+  color: white;
+}
+
+/* Pet info inside card */
+.pet-info {
+  padding: 1.2rem;
+}
+
+.pet-info h3 {
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.pet-details {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  color: #718096;
+  font-size: 0.9rem;
+}
+
+.pet-description {
+  color: #4a5568;
+  margin-bottom: 1.2rem;
+  line-height: 1.5;
+}
+
+/* Buttons inside card */
+.pet-actions {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.pet-actions button {
+  flex: 1;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+/* Action buttons styling */
+.view-btn {
+  background-color: #4e54c8;
+  color: white;
+}
+.view-btn:hover {
+  background-color: #3f44a7;
+}
+
+.edit-btn {
+  background-color: #f0f2f5;
+  color: #4a5568;
+}
+.edit-btn:hover {
+  background-color: #e2e8f0;
+}
+
+.delete-btn {
+  background-color: #f44336;
+  color: white;
+}
+.delete-btn:hover {
+  background-color: #d32f2f;
+}
+
+/* ---------------- Modal Styles ---------------- */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 5% auto;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 600px;
+  position: relative;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Modal details layout */
+.pet-detail-container {
+  display: flex;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.pet-detail-image {
+  flex: 1;
+}
+.pet-detail-image img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.pet-detail-info {
+  flex: 2;
+}
+.pet-detail-info p {
+  margin-bottom: 0.5rem;
+}
+
+.pet-detail-description {
+  margin: 1.5rem 0;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+/* ---------------- Empty State ---------------- */
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem;
+  color: #718096;
+}
+.empty-state p {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+}
+
+/* ---------------- Responsive Design ---------------- */
+@media (max-width: 1024px) {
+  .content {
+    flex-direction: column;
+  }
+  .map-container {
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    width: 70px;
+    padding: 1rem 0.5rem;
+  }
+  .logo h2 {
+    display: none;
+  }
+  .sidebar nav a {
+    justify-content: center;
+    padding: 0.8rem;
+  }
+  .sidebar nav a span {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-btn {
+    display: block;
+  }
+  .sidebar {
+    position: fixed;
+    left: -250px;
+    height: 100%;
+    z-index: 1000;
+  }
+  .sidebar.active {
+    left: 0;
+  }
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .filters select {
+    width: 100%;
+  }
+  .profile {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-end;
+  }
+  .pet-detail-container {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 1rem;
+  }
+  .header h2 {
+    font-size: 1.2rem;
+  }
+  .pets-grid {
+    grid-template-columns: 1fr;
+  }
+  .pet-details {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .pet-actions {
+    flex-direction: column;
+  }
+}
+
+/* ---------------- Animations ---------------- */
+@keyframes slideIn {
+  from {
+    left: -250px;
+  }
+  to {
+    left: 0;
+  }
+}
+
+.sidebar.active {
+  animation: slideIn 0.3s ease forwards;
+}
+
+/* Overlay for sidebar */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
+}
+
+/* ---------------- Leaflet Marker Cluster Styles ---------------- */
+.marker-cluster-small {
+  background-color: rgba(181, 226, 140, 0.6);
+}
+.marker-cluster-small div {
+  background-color: rgba(110, 204, 57, 0.6);
+}
+
+.marker-cluster-medium {
+  background-color: rgba(241, 211, 87, 0.6);
+}
+.marker-cluster-medium div {
+  background-color: rgba(240, 194, 12, 0.6);
+}
+
+.marker-cluster-large {
+  background-color: rgba(253, 156, 115, 0.6);
+}
+.marker-cluster-large div {
+  background-color: rgba(241, 128, 23, 0.6);
+}
+
+/* Old IE fallback colors */
+.leaflet-oldie .marker-cluster-small {
+  background-color: rgb(181, 226, 140);
+}
+.leaflet-oldie .marker-cluster-small div {
+  background-color: rgb(110, 204, 57);
+}
+
+.leaflet-oldie .marker-cluster-medium {
+  background-color: rgb(241, 211, 87);
+}
+.leaflet-oldie .marker-cluster-medium div {
+  background-color: rgb(240, 194, 12);
+}
+
+.leaflet-oldie .marker-cluster-large {
+  background-color: rgb(253, 156, 115);
+}
+.leaflet-oldie .marker-cluster-large div {
+  background-color: rgb(241, 128, 23);
+}
+
+.footer {
+  width: 100%;
+  text-align: center;
+  padding: 12px 10px;
+  font-size: 14px;
+  color: #555;
+  background-color: #f9f9f9;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* footer ke liye responsiveness */
+@media (max-width: 600px) {
+  .footer {
+    font-size: 12px;
+    padding: 8px;
+  }
+}

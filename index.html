@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pet Admin Panel</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <aside class="sidebar" id="sidebar">
+        <div class="logo">
+          <span class="icon">🐾</span>
+          <h2>Admin Panel</h2>
+        </div>
+        <nav>
+          <a href="#">Dashboard</a>
+          <a href="#" class="active">Pets</a>
+          <a href="#">Applications</a>
+          <a href="#">Announcements</a>
+        </nav>
+      </aside>
+
+      <main class="main">
+        <header class="header">
+          <button id="menuBtn" class="menu-btn">☰</button>
+          <h2>Available Pets</h2>
+          <div class="profile">
+            <span class="user">👤 Admin</span>
+            <button id="logoutBtn">Logout</button>
+          </div>
+        </header>
+
+        <div class="filters">
+          <select id="breedFilter">
+            <option>Breed</option>
+            <option>Labrador</option>
+            <option>Tabby</option>
+            <option>German Shepherd</option>
+            <option>Siamese</option>
+            <option>Poodle</option>
+            <option>Golden Retriever</option>
+          </select>
+          <select id="ageFilter">
+            <option>Age</option>
+            <option>Puppy/Kitten</option>
+            <option>Adult</option>
+          </select>
+          <select id="sizeFilter">
+            <option>Size</option>
+            <option>Small</option>
+            <option>Medium</option>
+            <option>Large</option>
+          </select>
+          <select id="locationFilter">
+            <option>Location Distance</option>
+            <option>1 km</option>
+            <option>3 km</option>
+            <option>5 km</option>
+            <option>10 km</option>
+          </select>
+          <button id="filterBtn">Filter</button>
+          <button id="resetFilters">Reset</button>
+        </div>
+
+        <div class="content">
+          <div class="pets-grid" id="petsGrid">
+            <!-- Pets loaded idr ko -->
+          </div>
+          <div class="map-container">
+            <div id="map"></div>
+            <div class="map-controls">
+              <button id="locateBtn">📍 My Location</button>
+              <button id="zoomInBtn">+</button>
+              <button id="zoomOutBtn">-</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- pet details ke liye -->
+    <div id="petModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="modalBody"></div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <footer class="footer">
+      <p>© 2025 Copyright by Md Tabish</p>
+    </footer>
+
+    <!-- pet details ke liye -->
+    <div id="petModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="modalBody"></div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
